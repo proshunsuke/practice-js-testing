@@ -5,13 +5,13 @@ let http = require('http');
 let server;
 
 let Browser = require('zombie');
-describe('User visits signup page', () => {
+describe('インデックスページ', () => {
 
     before(() => {
         server = http.createServer(app).listen(3000);
     });
 
-    describe('hello world', () => {
+    describe('セットアップ', () => {
         let browser = new Browser({
             site: 'http://localhost:3000'
         });
@@ -20,11 +20,10 @@ describe('User visits signup page', () => {
             browser.visit('/', done);
         });
 
-        describe('/にアクセス出来ること', () =>{
-            it('should be successful', () => {
-                browser.assert.success();
-            });
+        it('インデックスページにアクセス出来ること', () => {
+            browser.assert.success();
         });
+
     });
 
     after( (done) => {
