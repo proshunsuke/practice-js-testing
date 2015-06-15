@@ -2,16 +2,19 @@ process.env.NODE_ENV = 'test';
 
 let app = require('../app');
 let http = require('http');
+let server;
 
 let Browser = require('zombie');
 describe('User visits signup page', () => {
 
     before(() => {
-        this.server = http.createServer(app).listen(3000);
+        server = http.createServer(app).listen(3000);
     });
 
     describe('hello world', () => {
-        let browser = new Browser({ site: 'http://localhost:3000'});
+        let browser = new Browser({
+            site: 'http://localhost:3000'
+        });
 
         before((done) => {
             browser.visit('/', done);
@@ -25,6 +28,6 @@ describe('User visits signup page', () => {
     });
 
     after( (done) => {
-        this.server.close(done);
+        server.close(done);
     });
 });
