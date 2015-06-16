@@ -5,11 +5,12 @@ let http = require('http');
 let server;
 
 let Browser = require('zombie');
-describe('インデックスページ', () => {
 
-    before(() => {
-        server = http.createServer(app).listen(3000);
-    });
+before(() => {
+    server = http.createServer(app).listen(3000);
+});
+
+describe('インデックスページ', () => {
 
     describe('セットアップ', () => {
         let browser = new Browser({
